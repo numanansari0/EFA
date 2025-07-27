@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
 
 Route::get('/', function () {
     return view('index');
@@ -47,3 +48,6 @@ Route::get('/courses/trading', function () {
 Route::get('/courses/web_designing', function () {
     return view('courses.web_designing');
 })->name('courses.web_designing');
+
+Route::post('/admission/submit', [PageController::class, 'submit'])->name('admission.submit');
+Route::post('/instructor/apply', [PageController::class, 'apply'])->name('instructor.apply');

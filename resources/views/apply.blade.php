@@ -99,56 +99,60 @@
         <div class="container">
             <div class="row g-4 wow fadeInUp" data-wow-delay="0.5s ">
                 <center>
-                    <form class="shadow p-4" style="max-width: 550px;">
+                    <form method="POST" action="{{ route('admission.submit') }}" class="shadow p-4" style="max-width: 550px;">
+                        @csrf
                         <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                             <h1 class="mb-5 bg-white text-center px-2">Apply For Your Admission</h1>
+                            @if(session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
                         </div>
                         <div class="row g-3">
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="username"
-                                        placeholder="Please Enter the full name.">
-                                    <label for="Username">Full Name</label>
+                                    <input type="text" class="form-control" name="name" placeholder="Full Name" required>
+                                    <label>Full Name</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <input type="email" class="form-control" id="email"
-                                        placeholder="Please Enter Your Email.">
-                                    <label for="email">Email Address</label>
+                                    <input type="email" class="form-control" name="email" placeholder="Email Address" required>
+                                    <label>Email Address</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <input type="number" class="form-control" id="number" placeholder="number">
-                                    <label for="number">Number</label>
+                                    <input type="number" class="form-control" name="phone" placeholder="Phone Number" required>
+                                    <label>Phone</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <label for="number">Choose Your Course</label>
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected></option>
-                                        <option value="1">Trading</option>
-                                        <option value="2">Web Designing</option>
-                                        <option value="3">E-Commrace</option>
-                                        <option value="4">Digital Marketing</option>
-                                        <option value="5">Office Management</option>
-                                        <option value="6">C for Beginners</option>
-                                        <option value="7">ChatGPT for Beginners</option>
+                                    <label>Choose Your Course</label>
+                                    <select class="form-select" name="course" required>
+                                        <option value="" disabled selected>Select a course</option>
+                                        <option value="Trading">Trading</option>
+                                        <option value="Web Designing">Web Designing</option>
+                                        <option value="E-Commerce">E-Commerce</option>
+                                        <option value="Digital Marketing">Digital Marketing</option>
+                                        <option value="Office Management">Office Management</option>
+                                        <option value="C for Beginners">C for Beginners</option>
+                                        <option value="ChatGPT for Beginners">ChatGPT for Beginners</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <div class="text-left">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Do You Have Any Question?" rows="5"></textarea>
-                                </div>
+                                <textarea class="form-control" name="message" placeholder="Do you have any questions?" rows="5"></textarea>
                             </div>
                             <div class="col-12">
                                 <button class="btn text-light w-100 py-3" type="submit">Apply</button>
                             </div>
                         </div>
                     </form>
+
                 </center>
             </div>
         </div>

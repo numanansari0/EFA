@@ -228,78 +228,90 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Apply as Instructor</h5>
+                    @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form method="POST" action="{{ route('instructor.apply') }}" class="shadow p-4">
+                        @csrf
                         <h5 class="mb-4">Join EFA Learn & Earn Academy's Global Community of Expert Instructors</h5>
+
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="f_name" placeholder="First Name">
-                                    <label for="name">First Name</label>
+                                    <input type="text" class="form-control" name="first_name" placeholder="First Name" required>
+                                    <label>First Name</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="l_name" placeholder="Last Name">
-                                    <label for="name">Last Name</label>
+                                    <input type="text" class="form-control" name="last_name" placeholder="Last Name" required>
+                                    <label>Last Name</label>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                    <label for="email">Your Email</label>
+                                    <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                                    <label>Email</label>
                                 </div>
                             </div>
+
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="tel" class="form-control" id="phone" placeholder="Phone Number">
-                                    <label for="name">Phone Number</label>
+                                    <input type="tel" class="form-control" name="phone" placeholder="Phone Number" required>
+                                    <label>Phone Number</label>
                                 </div>
                             </div>
 
                             <div class="col-12">
-                                <div class="form-floating">
-                                    <label for="degree">What is the highest degree ?</label>
-                                    <select name="degree" id="degree" class="form-control">
-                                        <option value="..">...</option>
-                                        <option value="High School">High School</option>
-                                        <option value="Undergraduate">Undergraduate</option>
-                                        <option value="Graduate">Graduate</option>
-                                        <option value="Post-Graduate">Post-Graduate</option>
-                                    </select>
+                                <label class="form-label mt-2">What is the highest degree?</label>
+                                <select name="degree" class="form-control" required>
+                                    <option value="" disabled selected>Choose...</option>
+                                    <option value="High School">High School</option>
+                                    <option value="Undergraduate">Undergraduate</option>
+                                    <option value="Graduate">Graduate</option>
+                                    <option value="Post-Graduate">Post-Graduate</option>
+                                </select>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label mt-2">What subject would you like to teach?</label>
+                                <select name="subject" class="form-control" required>
+                                    <option value="" disabled selected>Choose...</option>
+                                    <option value="Technology">Technology</option>
+                                    <option value="Marketing">Marketing</option>
+                                    <option value="Business">Business</option>
+                                    <option value="Education">Education</option>
+                                </select>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-floating mt-2">
+                                    <textarea class="form-control" name="address" placeholder="Address" style="height: 150px" required></textarea>
+                                    <label>Address</label>
                                 </div>
                             </div>
 
                             <div class="col-12">
-                                <div class="form-floating">
-                                    <label for="degree">What subject would you like to teach?</label>
-                                    <select name="degree" id="degree" class="form-control">
-                                        <option value="..">...</option>
-                                        <option value="Technology">Technology</option>
-                                        <option value="Marketing">Marketing</option>
-                                        <option value="Business">Business</option>
-                                        <option value="Education">Education</option>
-                                    </select>
+                                <div class="form-check mt-3">
+                                    <input class="form-check-input" type="checkbox" name="agree" required>
+                                    <label class="form-check-label">
+                                        I agree to the terms and confirm the truthfulness of my submission.
+                                    </label>
                                 </div>
                             </div>
 
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Leave a message here" id="address" style="height: 150px"></textarea>
-                                    <label for="message">Address</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="">
-                                    <input type="checkbox">
-                                    I acknowledge and warrant the truthfulness of the information I submit, I also acknowledge that I have read, understand, and I agree with all Terms of service, and that I fully agree that all sales are final and that there are no refunds whatsoever.
-                                </div>
+                            <div class="col-12 mt-3">
+                                <button class="btn btn-primary w-100 py-3" type="submit">Submit Application</button>
                             </div>
                         </div>
                     </form>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
