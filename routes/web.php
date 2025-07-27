@@ -37,10 +37,10 @@ Route::get('/contact', function () {
 })->name('contact');
 Route::get('/courses/E_Commerce', function () {
     return view('courses.E_Commerce');
-})->name('courses.Office_Management');
+})->name('courses.E_Commerce');
 Route::get('/courses/Office_Management', function () {
     return view('courses.Office_Management');
-})->name('courses.E_Learning');
+})->name('courses.Office_Management');
 Route::get('/courses/trading', function () {
     return view('courses.trading');
 })->name('courses.trading');
