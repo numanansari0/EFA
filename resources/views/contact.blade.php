@@ -134,41 +134,50 @@
                 </div>
 
                 <div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
-                    <form>
+                    <form method="POST" action="{{ route('contact.submit') }}" class="shadow p-4" style="max-width: 550px;">
+                        @csrf
+
+                        @if(session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="name" required placeholder="Your Name">
+                                    <input type="text" class="form-control" name="name" id="name" required placeholder="Your Name">
                                     <label for="name">Your Name</label>
                                 </div>
                             </div>
+
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="email" class="form-control" id="email" required
-                                        placeholder="Your Email">
+                                    <input type="email" class="form-control" name="email" id="email" required placeholder="Your Email">
                                     <label for="email">Your Email</label>
                                 </div>
                             </div>
+
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" required placeholder="Subject">
+                                    <input type="text" class="form-control" name="subject" id="subject" required placeholder="Subject">
                                     <label for="subject">Subject</label>
                                 </div>
                             </div>
+
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <textarea class="form-control" required placeholder="Leave a message here"
-                                        id="message" style="height: 150px"></textarea>
+                                    <textarea class="form-control" name="message" id="message" required placeholder="Leave a message here" style="height: 150px"></textarea>
                                     <label for="message">Message</label>
                                 </div>
                             </div>
+
                             <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit"><a
-                                        href="mailto:efa.learnandearnacademy11@gmail.com" class="text-decoration-none"
-                                        style="color: #fff;" type="submit">Send Message</a></button>
+                                <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
                             </div>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>

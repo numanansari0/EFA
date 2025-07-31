@@ -51,3 +51,4 @@ Route::get('/courses/web_designing', function () {
 
 Route::post('/admission/submit', [PageController::class, 'submit'])->name('admission.submit');
 Route::post('/instructor/apply', [PageController::class, 'apply'])->name('instructor.apply');
+Route::post('/contact/submit', [PageController::class, 'submitContact'])->name('contact.submit');
